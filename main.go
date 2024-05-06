@@ -20,11 +20,16 @@ func main() {
 	for i, val := range file {
 		fileres[rune(i+32)] = strings.Split(val, "\n")
 	}
-
-	for i := 0; i < 8; i++ {
-		for _, val := range strings.Join(text, "\n") {
-			fmt.Print(fileres[val][i])
+	for _, val := range text {
+		if val == "" {
+			fmt.Println()
+			continue
 		}
-		fmt.Println()
+		for i := 0; i < 8; i++ {
+			for _, val2 := range val {
+				fmt.Print(fileres[val2][i])
+			}
+			fmt.Println()
+		}
 	}
 }
