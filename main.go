@@ -7,12 +7,16 @@ import (
 )
 
 func main() {
+	if len(os.Args) != 2 {
+		fmt.Println("Invalid args")
+		return
+	}
 	data, err := os.ReadFile("standard.txt")
 	if err != nil {
 		fmt.Print(err)
 		return
 	}
-	standard := strings.Split(string(data), "\n\n")
+	standard := strings.Split(string(data[1:]), "\n\n")
 	input := os.Args[1]
 	splitInput := strings.Split(input, "\\n")
 	var match bool
